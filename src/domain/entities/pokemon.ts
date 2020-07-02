@@ -4,6 +4,7 @@ import { PokemonType } from "./pokemon.type";
 export interface Pokemon {
     
     id: number
+    url: string
     name: string
     base_experience: number
     height: number

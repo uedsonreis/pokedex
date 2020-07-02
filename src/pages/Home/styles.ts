@@ -12,10 +12,9 @@ export default StyleSheet.create({
     },
 
     title: {
-        width: 334,
+        width: '100%',
         height: 38,
-        marginTop: 100,
-        fontFamily: 'Arial',
+        marginTop: 10,
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 32,
@@ -24,11 +23,10 @@ export default StyleSheet.create({
     },
 
     description: {
-        width: 334,
+        width: '100%',
         height: 40,
         marginTop: 10,
         marginBottom: 20,
-        fontFamily: 'Arial',
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: 16,
@@ -37,7 +35,7 @@ export default StyleSheet.create({
     },
 
     searchItem: {
-        width: 334,
+        width: '100%',
         height: 60,
         marginBottom: 45,
         backgroundColor: '#F2F2F2',
@@ -53,6 +51,17 @@ export default StyleSheet.create({
         backgroundColor: '#F2F2F2',
         alignItems: 'center',
         display: 'flex'
-    }
+    },
+
+    list: {
+        width: '100%',
+    },
+
+    bottomSheet: {
+        justifyContent: "center",
+        alignItems: "center",
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+    },
 
 })

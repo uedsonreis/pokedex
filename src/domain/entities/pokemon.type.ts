@@ -1,4 +1,6 @@
+import { Type } from "./type";
+
 export interface PokemonType {
     slot: number
-    type: any // NamedAPIResource (Type)
+    type: Type // NamedAPIResource (Type)
 }
