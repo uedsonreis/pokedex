@@ -1,4 +1,4 @@
-import { Type } from "../domain/entities/type"
+import { Type } from "../domain/entities/others"
 
 type ColorSchema = { colorButton: string | undefined, colorCard: string | undefined }
 
@@ -41,7 +41,7 @@ class ColorUtil {
                 colorButton: '#4A90DA', colorCard: '#58ABF6'
             }
             
-            default: return { colorButton: undefined, colorCard: undefined }
+            default: return { colorButton: undefined, colorCard: '#E8ECF7' }
         }
     }
 

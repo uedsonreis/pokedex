@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import colorUtil from '../../utils/color.util'
-import { Type } from '../../domain/entities/type'
+import colorUtil from '../../../utils/color.util'
+import { Type } from '../../../domain/entities/others'
 
 class PokeButtonStyle {
 

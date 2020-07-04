@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PokemonType } from "../../domain/entities/pokemon.type"
+import { PokemonType } from "../../../domain/entities/pokemon.type"
 import { Button, Icon, Text } from 'native-base'
 
 import pokeButtonStyle from './styles'

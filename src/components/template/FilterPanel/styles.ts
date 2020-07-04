@@ -54,4 +54,8 @@ export default StyleSheet.create({
         fontSize: 16,
     },
 
+    input: {
+        height: 40,
+    },
+
 })

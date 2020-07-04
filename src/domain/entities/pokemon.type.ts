@@ -1,4 +1,4 @@
-import { Type } from "./type";
+import { Type } from "./others";
 
 export interface PokemonType {
     slot: number
