@@ -4,7 +4,7 @@ import { State } from '../domain/state'
 
 const initialState: State = {
     filters: {
-        type: null, weaknesses: null, height: 'tall', weight: 'normal', range: [1, 100]
+        type: null, weaknesses: null, height: 'tall', weight: 'light', range: [1, 100]
     },
     sort: {
         name: false, desc: false

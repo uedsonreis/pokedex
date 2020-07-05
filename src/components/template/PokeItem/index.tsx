@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image, Text } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { Card, View, CardItem, Body, Right } from 'native-base'
 
 import PokeButton from '../PokeButton'
@@ -13,14 +14,17 @@ export default function PokeItem(props: Props) {
 
     const { pokemon } = props
 
+    const navigation = useNavigation()
+
     const styles = pokeItemStyle.genarateStyles(pokemon.types[0].type)
 
     return (
+        <View>
         <Card style={styles.card}>
             <CardItem style={styles.cardItem}>
                 <Body>
                     <Text style={styles.code}>{formatId(pokemon)}</Text>
-                    <Text style={styles.title}>{pokemon.name}</Text>
+                    <Text style={styles.title} onPress={() => navigation.navigate('info', pokemon)}>{pokemon.name}</Text>
                     <View style={styles.buttons}>
                         {pokemon.types.map(pokeType => <PokeButton key={pokeType.slot} pokeType={pokeType} />)}
                     </View>
@@ -30,6 +34,7 @@ export default function PokeItem(props: Props) {
                 </Right>
             </CardItem>
         </Card>
+        </View>
     )
 
 }
