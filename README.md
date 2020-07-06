@@ -1,5 +1,7 @@
 # Pokédex
 
+Este projeto foi desenvolvido para consumir informações da API (https://pokeapi.co/).
+
 ## Requisitos
     Ter o Git instalado na máquina
     https://git-scm.com/downloads
