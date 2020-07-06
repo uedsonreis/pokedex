@@ -21,7 +21,7 @@ Entre na pasta do projeto (pokedex) e digite o comando abaixo:
 - npm start
 
 ## Funcionalidades
-- Lista dos Pokemons da API
+- Listagem dos Pokemons da API
 - Filtragem da lista de Pokemons
 - Ordenação da lista de Pokemons
 - Visualização de informações sobre cada Pokemon
