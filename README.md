@@ -7,7 +7,7 @@
     Installar o Expo CLI
     https://docs.expo.io/get-started/installation/
 
-## Primeiro passo - Baixar o projeto
+## Primeiro passo - baixar o projeto
 Digite o comando abaixo dentro do diretório onde deseja baixar o projeto:
 - git clone https://github.com/uedsonreis/pokedex.git
 
