@@ -19,3 +19,15 @@ Entre na pasta do projeto (pokedex) e digite o comando abaixo:
 
 ## Terceiro passo - rodar o app
 - npm start
+
+## Funcionalidades
+- Lista dos Pokemons da API
+- Filtragem da lista de Pokemons
+- Ordenação da lista de Pokemons
+- Visualização de informações sobre cada Pokemon
+
+## Principais tecnologias utilizadas
+- React Native (https://reactnative.dev/)
+- Redux (https://redux.js.org/)
+- Native Base (https://nativebase.io/)
+- React Navigation (https://reactnavigation.org/)
