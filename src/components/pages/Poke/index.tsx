@@ -47,11 +47,11 @@ function PokePage() {
                         <Stats pokemon={pokemon} />
                     </Tab>
                     
-                    <Tab heading={
+                    {/* <Tab heading={
                         <TabHeading style={styles.tab}><Text style={styles.textTab}>Evolution</Text></TabHeading>
                     }>
                         <Evolution pokemon={pokemon} />
-                    </Tab>
+                    </Tab> */}
                 </Tabs>
 
             </Content>

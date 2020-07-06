@@ -23,4 +23,5 @@ export interface Pokemon {
     stats: any[] // list PokemonStat
     types: PokemonType[] // list PokemonType
 
+    data?: any
 }

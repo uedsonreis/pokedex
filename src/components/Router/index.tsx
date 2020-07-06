@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import HomePage from '../pages/Home'
-import PokePage from '../pages/PokePage'
+import PokePage from '../pages/Poke'
 
 export default function Router() {
 

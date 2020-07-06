@@ -19,7 +19,6 @@ export default function PokeItem(props: Props) {
     const styles = pokeItemStyle.genarateStyles(pokemon.types[0].type)
 
     return (
-        <View>
         <Card style={styles.card}>
             <CardItem style={styles.cardItem}>
                 <Body>
@@ -34,7 +33,6 @@ export default function PokeItem(props: Props) {
                 </Right>
             </CardItem>
         </Card>
-        </View>
     )
 
 }

@@ -1,35 +1,63 @@
 import React, { useState, useEffect } from 'react'
 import { Text } from 'react-native'
-import { Content, List, Item, Icon, Input, Container, Header, Left, Body, Right, Button } from 'native-base'
+import { Content, List, Label, Icon, Container, Header, Left, Body, Right, Button, Spinner } from 'native-base'
 import RBSheet from "react-native-raw-bottom-sheet"
 import { connect } from 'react-redux'
 
 import FilterPanel from '../../template/FilterPanel'
 import PokeItem from '../../template/PokeItem'
-import GenerationPanel from '../../template/GenerationPanel'
 
 import { State } from '../../../domain/state'
 import { Pokemon } from '../../../domain/entities/pokemon'
 import SortPanel from '../../template/SortPanel'
 
-import { Controller } from './controller'
+import controller from './controller'
 import styles from './styles'
 
 type Props = { state: State }
 
-function Home(props: Props) {
-
-    const controller = new Controller(props.state)
+function ListPanel(props: Props) {
 
     const [pokemons, setPokemons] = useState<Pokemon[]>([])
-
-    let bsSortRef: any
-    let bsFilterRef: any
-    let bsGenerationRef: any
+    const [loading, setLoading] = useState<boolean>(false)
 
     useEffect(() => {
-        controller.getFullPokemons().then(results => setPokemons(results))
-    }, [props])
+        setLoading(true)
+        controller.getFullPokemons(props.state).then(results => {
+            setPokemons(results)
+            setLoading(false)
+        })
+    }, [props.state])
+    
+    if (!pokemons || pokemons.length < 1) return (
+        <Content>
+            <Spinner color="black" />
+            <Label>Loading, please wait...</Label>
+        </Content>
+    )
+
+    if (loading) return (
+        <Content>
+            <Spinner color="black" />
+            <Label>Filtering, please wait...</Label>
+        </Content>
+    )
+
+    return (
+        <List
+            listBorderColor={'black'}
+            style={styles.list} horizontal={false}
+            leftOpenValue={75} rightOpenValue={-75}
+            dataArray={pokemons} keyExtractor={data => data.name}
+            renderRow={pokemon => <PokeItem pokemon={pokemon} />}
+        />
+    )
+}
+
+function Home(props: Props) {
+    
+    let bsSortRef: any
+    let bsFilterRef: any
 
     return (
         <Container>
@@ -39,22 +67,13 @@ function Home(props: Props) {
                 <Body />
                 <Right>
                     <Button transparent light onPress={() => {
-                        bsSortRef.close()
                         bsFilterRef.close()
-                        bsGenerationRef.open()
-                    }}>
-                        <Icon name='ios-grid' />
-                    </Button>
-                    <Button transparent light onPress={() => {
-                        bsFilterRef.close()
-                        bsGenerationRef.close()
                         bsSortRef.open()
                     }}>
                         <Icon name='list' />
                     </Button>
                     <Button transparent light onPress={() => {
                         bsSortRef.close()
-                        bsGenerationRef.close()
                         bsFilterRef.open()
                     }}>
                         <Icon name='md-funnel' />
@@ -65,27 +84,9 @@ function Home(props: Props) {
             <Content scrollEnabled={false} contentContainerStyle={styles.container}>
                 <Text style={styles.title}>Pokédex</Text>
                 <Text style={styles.description}>Search for Pokémon by name or using the National Pokédex number.</Text>
-
-                <Item style={styles.searchItem} regular>
-                    <Icon name='search' />
-                    <Input style={styles.searchInput} placeholder='What Pokémon are you looking for?' />
-                </Item>
-
-                <List
-                    style={styles.list} leftOpenValue={75} rightOpenValue={-75} horizontal={false}
-                    dataArray={pokemons} keyExtractor={data => data.name}
-                    renderRow={data => <PokeItem pokemon={data} />}
-                />
+                <ListPanel state={props.state} />
             </Content>
 
-            <RBSheet ref={ref => { bsGenerationRef = ref }}
-                customStyles={{ container: styles.bottomSheet }}
-                height={600} closeOnPressBack closeOnPressMask
-            >
-                <GenerationPanel
-                    // handleClose={() => bsGenerationRef.close()}
-                />
-            </RBSheet>
             <RBSheet ref={ref => { bsSortRef = ref }}
                 customStyles={{ container: styles.bottomSheet }}
                 height={400} closeOnPressBack closeOnPressMask

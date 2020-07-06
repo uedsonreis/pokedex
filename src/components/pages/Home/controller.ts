@@ -11,11 +11,14 @@ const NORMAL = 2000
 
 let urlNextPage: string | null = null
 
-export class Controller {
+class Controller {
 
-    constructor(private state: State) {}
+    private readonly fullPokemons: Map<number, Pokemon> = new Map()
+    private state!: State
 
-    public async getFullPokemons(): Promise<Pokemon[]> {
+    public async getFullPokemons(state: State): Promise<Pokemon[]> {
+        this.state = state
+
         const { range } = this.state.filters
 
         const offset = this.state.filters.range[0] - 1
@@ -28,14 +31,20 @@ export class Controller {
     }
 
     private async fulfillPokemon(pokemons: Pokemon[]): Promise<Pokemon[]> {
-        const fullPokemonList: Pokemon[] = []
+        const newPokemonList: Pokemon[] = []
 
         for (let pokemon of pokemons) {
-            const fullPokemon = await api.get(pokemon.url)
-            if (this.filtrate(fullPokemon)) fullPokemonList.push(fullPokemon)
+            let fullPokemon = this.fullPokemons.get(pokemon.id)
+
+            if (!fullPokemon) {
+                fullPokemon = await api.get(pokemon.url)
+                this.fullPokemons.set(fullPokemon!.id, fullPokemon!)
+            }
+
+            if (this.filtrate(fullPokemon!)) newPokemonList.push(fullPokemon!)
         }
 
-        return this.sort(fullPokemonList)
+        return this.sort(newPokemonList)
     }
 
     private sort(pokemons: Pokemon[]): Pokemon[] {
@@ -90,3 +99,5 @@ export class Controller {
         return true
     }
 }
+
+export default new Controller()

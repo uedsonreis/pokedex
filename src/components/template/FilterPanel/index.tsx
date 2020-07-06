@@ -93,7 +93,7 @@ function FilterPanel(props: Props) {
                     >
                         <Picker.Item label={''} value={''} />
                         {types.map(type => (
-                            <Picker.Item label={type.name} value={type.name} />
+                            <Picker.Item key={type.name} label={type.name} value={type.name} />
                         ))}
                     </Picker>
                 </Item>
@@ -109,7 +109,7 @@ function FilterPanel(props: Props) {
                     >
                         <Picker.Item label={''} value={''} />
                         {types.map(type => (
-                            <Picker.Item label={type.name} value={type.name} />
+                            <Picker.Item key={type.name} label={type.name} value={type.name} />
                         ))}
                     </Picker>
                 </Item>
@@ -124,7 +124,7 @@ function FilterPanel(props: Props) {
                         onValueChange={value => setSelectedHeight(findHeight(value))}
                     >
                         {heights.map(item => (
-                            <Picker.Item label={item} value={item} />
+                            <Picker.Item key={item} label={item} value={item} />
                         ))}
                     </Picker>
                 </Item>
@@ -139,7 +139,7 @@ function FilterPanel(props: Props) {
                         onValueChange={value => setSelectedWeight(findWeight(value))}
                     >
                         {weights.map(item => (
-                            <Picker.Item label={item} value={item} />
+                            <Picker.Item key={item} label={item} value={item} />
                         ))}
                     </Picker>
                 </Item>
